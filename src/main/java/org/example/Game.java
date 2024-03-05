@@ -31,7 +31,6 @@ public class Game {
         }
         return score;
     }
-
     // méthode pour savoir si on a un "strike"
     private boolean isStrike(int framIndex) {
         return rolls[framIndex] == 10;
