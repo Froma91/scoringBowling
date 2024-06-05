@@ -2,7 +2,7 @@
 
 ## Image
 
-![](images/bowling.jpg)
+![](images/bowling.png)
 
 
 The game consists of 10 frames as shown above. In each frame the player has
