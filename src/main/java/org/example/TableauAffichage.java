@@ -11,15 +11,12 @@ public class TableauAffichage {
 
         System.out.println("Enregistrer best score");
     }
-
     public enum StrikeSerie {
         PREMIER,
         SECOND,
         TROISIEME_ET_PLUS
     }
-
     private boolean connecte = false;
-
     public boolean seConnecter() {
         System.out.println("Connexion en cours");
         try {
@@ -34,7 +31,6 @@ public class TableauAffichage {
         System.out.println("Connexion effectuée");
         return connecte;
     }
-
     public void showStrike(StrikeSerie strikeSerie) {
         if(!connecte) {
             throw new IllegalStateException("Impossible, non connecté au tableau d'affichage");
@@ -50,9 +46,11 @@ public class TableauAffichage {
             case TROISIEME_ET_PLUS:
                 System.out.println("Affiche à partir du troisième strike");
                 break;
+
+                default:
+                throw new IllegalArgumentException("Série de strike inconnue");
         }
     }
-
     public void showSpare() {
         if(!connecte) {
             throw new IllegalStateException("Impossible, non connecté au tableau d'affichage");
@@ -60,12 +58,10 @@ public class TableauAffichage {
 
         System.out.println("Affiche spare");
     }
-
     public List<Integer> bestScores() {
         if(!connecte) {
             throw new IllegalStateException("Impossible, non connecté au tableau d'affichage");
         }
-
         return Arrays.asList(280,274,270);
     }
 }

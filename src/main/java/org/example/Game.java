@@ -3,16 +3,13 @@ package org.example;
 public class Game {
 
     // consructeur
-    public Game() {
-    }
-
+    public Game() {}
     private int[] rolls = new int[21]; // 21 car on peut avoir 21 lancers au maximum
     private int currentRoll = 0; // pour savoir où on en est dans le tableau rolls
 
     public void roll(int pins) {
         rolls[currentRoll++] = pins;
     }
-
     // méthode pour calculer le score total
     public int score() {
         int score = 0;
@@ -55,5 +52,4 @@ public class Game {
     private int sumOfBallsInFrame(int frameIndex) {
         return rolls[frameIndex] + rolls[frameIndex + 1];
     }
-
 }
