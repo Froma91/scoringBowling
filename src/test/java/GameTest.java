@@ -16,7 +16,6 @@ public class GameTest {
         }
         assertEquals(0, game.score());
     }
-
     // test 2 qui contient 20 lancers à 1 point. resultat attendu 20
     @Test
     @DisplayName("20 rolls at 1 point should return 20")
@@ -27,7 +26,6 @@ public class GameTest {
         }
         assertEquals(20, game.score());
     }
-
     // test 3 qui contient un "spare" (5+5), puis un 3 et un lancer à 4 points. resultat attendu 24
     @Test
     @DisplayName("One spare should return 24")
@@ -41,7 +39,6 @@ public class GameTest {
         }
         assertEquals(16, game.score());
     }
-
     // test 4 qui contient un "strike" (10), puis un 3 et un 4. resultat attendu 24
     @Test
     @DisplayName("One strike should return 24")
@@ -55,7 +52,6 @@ public class GameTest {
         }
         assertEquals(24, game.score());
     }
-
     // test 5 qui contient un "perfect game" (12 strikes). resultat attendu 300
     @Test
     @DisplayName("Perfect game should return 300")
