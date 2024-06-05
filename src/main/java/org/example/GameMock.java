@@ -1,8 +1,11 @@
 package org.example;
 
+import java.util.List;
+
 public class GameMock {
     private int[] rolls = new int[21]; // 21 car on peut avoir 21 lancers au maximum
     private int currentRoll = 0; // pour savoir où on en est dans le tableau rolls
+    private int strikeCount = 0; // pour suivre le nombre de strikes
 
     private final TableauAffichage tableauAffichage;
 
@@ -13,12 +16,14 @@ public class GameMock {
     public void roll(int pins) {
         rolls[currentRoll++] = pins;
 
-        //if (pins == 10) showStrike();
         if (pins == 10) {
-            if (currentRoll % 2 == 0) {
+            strikeCount++;
+            if (strikeCount == 1) {
                 tableauAffichage.showStrike(TableauAffichage.StrikeSerie.PREMIER);
-            } else {
+            } else if (strikeCount == 2) {
                 tableauAffichage.showStrike(TableauAffichage.StrikeSerie.SECOND);
+            } else {
+                tableauAffichage.showStrike(TableauAffichage.StrikeSerie.TROISIEME_ET_PLUS);
             }
         }
 
@@ -43,7 +48,6 @@ public class GameMock {
         }
         return score;
     }
-
     // méthode pour savoir si on a un "strike"
     private boolean isStrike(int framIndex) {
         return rolls[framIndex] == 10;
@@ -70,6 +74,14 @@ public class GameMock {
     }
 
     public void endGame() {
-        tableauAffichage.updateBestScores(score());
+        int currentScore = score();
+        List<Integer> bestScores = tableauAffichage.bestScores();
+
+        for(Integer bestScore : bestScores){
+            if(currentScore > bestScore){
+                tableauAffichage.updateBestScores(currentScore);
+                break; // on met à jour une seule fois si le score est meilleure
+            }
+        }
     }
 }
